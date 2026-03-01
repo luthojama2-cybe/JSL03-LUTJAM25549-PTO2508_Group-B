@@ -29,7 +29,7 @@ for (let i = 0; i < 3; i++) {
     "Enter task status (todo, doing, done):"
   ).toLowerCase();
 
-  // Validate status
+  // Status error catching
   while (
     taskStatus !== "todo" &&
     taskStatus !== "doing" &&
@@ -41,9 +41,9 @@ for (let i = 0; i < 3; i++) {
     ).toLowerCase();
   }
 
-  // Generate new ID
+  // Create new ID
   const newId =
-    Math.max(...initialTasks.map(task => task.id)) + 1;
+    Math.max(initialTasks.map(task => task.id)) + 1;
 
   const newTask = {
     id: newId,
@@ -54,8 +54,7 @@ for (let i = 0; i < 3; i++) {
 
   initialTasks.push(newTask);
 }
-
-// 🔥 Alert AFTER loop finishes
+//Chck console message
 alert("There are enough tasks on your board, please check them in the console.");
 
 // Log full list
