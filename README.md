@@ -36,3 +36,7 @@ A **structured and limited task management system** that enables users to add, r
 **Console Log of all and completed tasks**
 
 ![console log](./explainer-images/console%20log.png)
+
+**Project Review**
+
+This project was more challenging then the last 2 that I did before, as it required extensive research and an understanding of how objects and arrays work.
