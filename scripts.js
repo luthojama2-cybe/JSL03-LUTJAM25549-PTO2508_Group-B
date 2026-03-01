@@ -1,58 +1,3 @@
-// Ask the user for the title and description of task 1
-const task1Title = prompt("Enter task 1 title:");
-const task1Description = prompt("Enter task 1 description:");
-
-// Ask for the status of task 1 and convert it to lowercase
-let task1Status = prompt(
-  "Enter task 1 status (todo, doing, done):"
-).toLowerCase();
-
-// Keep asking until the user enters a valid status for task 1
-while (
-  task1Status !== "todo" &&
-  task1Status !== "doing" &&
-  task1Status !== "done"
-) {
-  alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
-  task1Status = prompt(
-    "Enter task 1 status (todo, doing, done):"
-  ).toLowerCase();
-}
-
-// Repeat the same steps for task 2
-const task2Title = prompt("Enter task 2 title:");
-const task2Description = prompt("Enter task 2 description:");
-let task2Status = prompt(
-  "Enter task 2 status (todo, doing, done):"
-).toLowerCase();
-
-while (
-  task2Status !== "todo" &&
-  task2Status !== "doing" &&
-  task2Status !== "done"
-) {
-  alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
-  task2Status = prompt(
-    "Enter task 2 status (todo, doing, done):"
-  ).toLowerCase();
-}
-
-// Check if task1 is done, and log it if so
-if (task1Status === "done") {
-  console.log("Title: " + task1Title + ", status: " + task1Status);
-}
-
-// Check if task2 is done, and log it if so
-if (task2Status === "done") {
-  console.log("Title: " + task2Title + ", status: " + task2Status);
-}
-
-// If neither task1 nor task2 is done, show a motivational message
-if (task1Status !== "done" && task2Status !== "done") {
-  console.log("No tasks completed, let's get to work!");
-}
-
-
 const initialTasks = [
   {
     id: 1,
@@ -74,3 +19,54 @@ const initialTasks = [
     status: "done",
   },
 ];
+
+// Allow up to 3 new tasks
+for (let i = 0; i < 3; i++) {
+
+  let taskTitle = prompt(`Enter title for task ${i + 1}:`);
+  let taskDescription = prompt(`Enter description for task ${i + 1}:`);
+  let taskStatus = prompt(
+    "Enter task status (todo, doing, done):"
+  ).toLowerCase();
+
+  // Validate status
+  while (
+    taskStatus !== "todo" &&
+    taskStatus !== "doing" &&
+    taskStatus !== "done"
+  ) {
+    alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
+    taskStatus = prompt(
+      "Enter task status (todo, doing, done):"
+    ).toLowerCase();
+  }
+
+  // Generate new ID
+  const newId =
+    Math.max(...initialTasks.map(task => task.id)) + 1;
+
+  const newTask = {
+    id: newId,
+    title: taskTitle,
+    description: taskDescription,
+    status: taskStatus,
+  };
+
+  initialTasks.push(newTask);
+}
+
+// 🔥 Alert AFTER loop finishes
+alert("There are enough tasks on your board, please check them in the console.");
+
+// Log full list
+console.log("Updated Task List:");
+console.log(initialTasks);
+
+// 🔥 Filter completed tasks
+const completedTasks = initialTasks.filter(
+  task => task.status === "done"
+);
+
+// Log only completed tasks
+console.log("Completed Tasks:");
+console.log(completedTasks);
