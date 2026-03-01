@@ -20,7 +20,7 @@ const initialTasks = [
   },
 ];
 
-// Allow up to 3 new tasks
+// 3 tasks loop
 for (let i = 0; i < 3; i++) {
 
   let taskTitle = prompt(`Enter title for task ${i + 1}:`);
@@ -43,7 +43,7 @@ for (let i = 0; i < 3; i++) {
 
   // Create new ID
   const newId =
-    Math.max(initialTasks.map(task => task.id)) + 1;
+    Math.max(...initialTasks.map(task => task.id)) + 1;
 
   const newTask = {
     id: newId,
@@ -61,11 +61,10 @@ alert("There are enough tasks on your board, please check them in the console.")
 console.log("Updated Task List:");
 console.log(initialTasks);
 
-// 🔥 Filter completed tasks
+// Completed task log
 const completedTasks = initialTasks.filter(
   task => task.status === "done"
 );
 
-// Log only completed tasks
 console.log("Completed Tasks:");
 console.log(completedTasks);
